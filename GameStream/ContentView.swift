@@ -9,11 +9,12 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-
+        
+        NavigationView {
+            
             ZStack {
                 
-                Color(red: 36/255, green: 56/255, blue: 91/255, opacity: 1.0)
+                Color("marine")
                     .ignoresSafeArea()
                 
                 VStack{
@@ -25,9 +26,9 @@ struct ContentView: View {
                     
                     
                 }
-                                
                 
-            }
+                
+            }.navigationBarBackButtonHidden(true)
             
             
         }
@@ -76,19 +77,70 @@ struct LoginAndSignUp: View{
 struct LoginView: View {
     
     @State var email: String = ""
+    @State var password: String = ""
+    @State var isLogin: Bool = false
     
     var body: some View{
         
-        VStack{
+        ScrollView {
+            VStack(alignment: .leading){
+                
+                Text("Email").foregroundColor(Color("dark-cian")).bold()
+                
+                ZStack (alignment: .leading){
+                    
+                    if email.isEmpty {
+                        Text(verbatim:"gamestream@gmail.com").font(.caption).foregroundColor(Color("light-gray"))
+                        
+                    }
+                    
+                    TextField("", text: $email).foregroundColor(.white)
+                    
+                }
+                
+                Divider().frame(height: 1).background(Color("dark-cian")).padding(.bottom)
+                
+                Text("Password").foregroundColor(Color("dark-cian")).bold()
+                
+                ZStack (alignment: .leading) {
+                    
+                    if password.isEmpty {
+                        Text(verbatim:"******").font(.caption).foregroundColor(Color("light-gray"))
+                    }
+                    
+                    SecureField("", text: $password).foregroundColor(.white)
+                    
+                }
+                
+                Divider().frame(height: 1).background(Color("dark-cian")).padding(.bottom)
+                
+                Text("¿Olvidaste tu constraseña?").font(.footnote).frame(width: 350, alignment: .trailing).foregroundColor(Color("dark-cian")).padding(.bottom)
+                
+                Button(action: {self.isLogin =  loginSesion()}) {
+                    Text("LOGIN").fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center).padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18)).overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("dark-cian"),lineWidth: 2.0).shadow(color: Color.white, radius: 6)).padding(.bottom, 50)
+                }
+                
+                Text("Login with your social network").foregroundColor(Color.white).frame(maxWidth: .infinity, alignment: .center).padding(.bottom)
+                
+                HStack(alignment: .center){
+                    Button(action: {}) {
+                        Text("Facebook").fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center).padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16)).overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("blue-gray"),lineWidth: 2.0)).background(Color("blue-gray"))
+                    }
+                    Button(action: {}) {
+                        Text("Twitter").fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center).padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16)).overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("blue-gray"),lineWidth: 2.0)).background(Color("blue-gray"))
+                    }
+                }
+                
+                
+                
+                
+                
+                
+            }.padding()
             
-            Text("Email").foregroundColor(Color(red: 63/255, green: 202/255, blue: 160/255, opacity: 1.0))
-            
-            TextField("gamestrem@gmail.com", text: $email).foregroundColor(Color.gray)
-            
-            Divider().foregroundColor(Color(red: 63/255, green: 202/255, blue: 160/255, opacity: 1.0)).bold()
-            
-        
-            
+            NavigationLink(destination: Home(), isActive: $isLogin) {
+                EmptyView()
+            }
         }
         
     }
@@ -96,8 +148,117 @@ struct LoginView: View {
 
 struct SingUpView: View {
     
+    @State var email: String = ""
+    @State var password: String = ""
+    
     var body: some View{
-        Text("Signup")
+        
+        ScrollView {
+            VStack(alignment: .leading){
+                
+                VStack(alignment: .center){
+                    
+                    Text("Choose your profile photo").foregroundColor(Color.white).frame(maxWidth: .infinity).fontWeight(.bold).padding(.bottom,3)
+                    
+                    Text("You can change your profile photo leter").foregroundColor(Color.gray).font(.footnote).padding(.bottom)
+                    
+                    ZStack {
+                        
+                        
+                        
+                        Button(action: {}) {
+                            Image("image_profile").resizable().aspectRatio(contentMode: .fit).frame(width: 100, height: 100, alignment: .center).clipShape(Circle())
+                                .shadow(radius: 3)
+                                .overlay(Circle().stroke(Color("dark-cian"), lineWidth: 2))
+                        }
+                        
+                        Image(systemName: "camera").foregroundColor(.white)
+                        
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                VStack(alignment: .leading){
+                    Text("Email").foregroundColor(Color("dark-cian")).bold()
+                    
+                    ZStack (alignment: .leading){
+                        
+                        if email.isEmpty {
+                            Text(verbatim:"gamestream@gmail.com").font(.caption).foregroundColor(Color("light-gray"))
+                            
+                        }
+                        
+                        TextField("", text: $email)
+                        
+                    }
+                    
+                    Divider().frame(height: 1).background(Color("dark-cian")).padding(.bottom)
+                }
+                
+                VStack(alignment: .leading){
+                    Text("Password").foregroundColor(Color("dark-cian")).bold()
+                    
+                    ZStack (alignment: .leading) {
+                        
+                        if password.isEmpty {
+                            Text(verbatim:"******").font(.caption).foregroundColor(Color("light-gray"))
+                        }
+                        
+                        SecureField("", text: $password)
+                        
+                    }
+                    
+                    
+                    Divider().frame(height: 1).background(Color("dark-cian")).padding(.bottom)
+                }
+                
+                VStack(alignment: .leading){
+                    Text("Confirm Password").foregroundColor(Color("dark-cian")).bold()
+                    
+                    ZStack (alignment: .leading) {
+                        
+                        if password.isEmpty {
+                            Text(verbatim:"******").font(.caption).foregroundColor(Color("light-gray"))
+                        }
+                        
+                        SecureField("", text: $password)
+                        
+                    }
+                    
+                    Divider().frame(height: 1).background(Color("dark-cian")).padding(.bottom)
+                }
+                
+                
+                
+                Button(action: {registerNewUser()}) {
+                    Text("SIGNUP").fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center).padding(EdgeInsets(top: 11, leading: 18, bottom: 11, trailing: 18)).overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("dark-cian"),lineWidth: 2.0).shadow(color: Color.white, radius: 6)).padding(.bottom, 50)
+                }
+                
+                VStack{
+                    Text("Signup with your social network").foregroundColor(Color.white).frame(maxWidth: .infinity, alignment: .center).padding(.bottom)
+                    
+                    HStack(alignment: .center){
+                        Button(action: {}) {
+                            Text("Facebook").fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center).padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16)).overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("blue-gray"),lineWidth: 2.0)).background(Color("blue-gray"))
+                        }
+                        Button(action: {}) {
+                            Text("Twitter").fontWeight(.bold).foregroundColor(.white).frame(maxWidth: .infinity, alignment: .center).padding(EdgeInsets(top: 9, leading: 16, bottom: 9, trailing: 16)).overlay(RoundedRectangle(cornerRadius: 6.0).stroke(Color("blue-gray"),lineWidth: 2.0)).background(Color("blue-gray"))
+                        }
+                    }
+                }
+                
+                
+                
+                
+                
+                
+                
+                
+            }.padding()
+        }
     }
     
 }
@@ -106,4 +267,14 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
+}
+
+func loginSesion() -> Bool{
+    print("Login....")
+    return true
+    
+}
+
+func registerNewUser(){
+    print("Registering new user...")
 }

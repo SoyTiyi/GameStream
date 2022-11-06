@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		403AE65229159ACD000C3F15 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AE65129159ACD000C3F15 /* Home.swift */; };
+		403AE6542915A425000C3F15 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = 403AE6532915A425000C3F15 /* Games.swift */; };
 		409D54112911BF4A001F7FBB /* GameStreamApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409D54102911BF4A001F7FBB /* GameStreamApp.swift */; };
 		409D54132911BF4A001F7FBB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 409D54122911BF4A001F7FBB /* ContentView.swift */; };
 		409D54152911BF4B001F7FBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 409D54142911BF4B001F7FBB /* Assets.xcassets */; };
@@ -34,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		403AE65129159ACD000C3F15 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		403AE6532915A425000C3F15 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		409D540D2911BF4A001F7FBB /* GameStream.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameStream.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		409D54102911BF4A001F7FBB /* GameStreamApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStreamApp.swift; sourceTree = "<group>"; };
 		409D54122911BF4A001F7FBB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -96,8 +100,10 @@
 			children = (
 				409D54102911BF4A001F7FBB /* GameStreamApp.swift */,
 				409D54122911BF4A001F7FBB /* ContentView.swift */,
+				403AE65129159ACD000C3F15 /* Home.swift */,
 				409D54142911BF4B001F7FBB /* Assets.xcassets */,
 				409D54162911BF4B001F7FBB /* Preview Content */,
+				403AE6532915A425000C3F15 /* Games.swift */,
 			);
 			path = GameStream;
 			sourceTree = "<group>";
@@ -258,7 +264,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				409D54132911BF4A001F7FBB /* ContentView.swift in Sources */,
+				403AE65229159ACD000C3F15 /* Home.swift in Sources */,
 				409D54112911BF4A001F7FBB /* GameStreamApp.swift in Sources */,
+				403AE6542915A425000C3F15 /* Games.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
